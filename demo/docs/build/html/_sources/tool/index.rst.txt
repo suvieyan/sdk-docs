@@ -1,0 +1,16 @@
+Welcome to demo's API Documentation
+===================================
+
+.. toctree::
+    :maxdepth: 2
+    :glob:
+
+Introduction
+============
+This is the introduction of demo。
+
+Indices and tables
+==================
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

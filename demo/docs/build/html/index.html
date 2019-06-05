@@ -1,0 +1,1128 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to demo’s API Documentation &#8212; Test 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="入门篇" href="beginning/index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-demo-s-api-documentation">
+<h1>Welcome to demo’s API Documentation<a class="headerlink" href="#welcome-to-demo-s-api-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beginning/index.html">入门篇</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="beginning/01_pythonstart.html">1. Python 入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beginning/02_pythonfunc.html">2. Python 函数</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="base/index.html">Welcome to demo’s API Documentation</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="base/index.html#introduction">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/index.html">Welcome to demo’s API Documentation</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tool/index.html#introduction">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</div>
+<span class="target" id="module-statemachine"></span><p>A finite state machine specialized for regular-expression-based text filters,
+this module defines the following classes:</p>
+<ul class="simple">
+<li><p><cite>StateMachine</cite>, a state machine</p></li>
+<li><p><cite>State</cite>, a state superclass</p></li>
+<li><p><cite>StateMachineWS</cite>, a whitespace-sensitive version of <cite>StateMachine</cite></p></li>
+<li><p><cite>StateWS</cite>, a state superclass for use with <cite>StateMachineWS</cite></p></li>
+<li><p><cite>SearchStateMachine</cite>, uses <cite>re.search()</cite> instead of <cite>re.match()</cite></p></li>
+<li><p><cite>SearchStateMachineWS</cite>, uses <cite>re.search()</cite> instead of <cite>re.match()</cite></p></li>
+<li><p><cite>ViewList</cite>, extends standard Python lists.</p></li>
+<li><p><cite>StringList</cite>, string-specific ViewList.</p></li>
+</ul>
+<p>Exception classes:</p>
+<ul class="simple">
+<li><p><cite>StateMachineError</cite></p></li>
+<li><p><cite>UnknownStateError</cite></p></li>
+<li><p><cite>DuplicateStateError</cite></p></li>
+<li><p><cite>UnknownTransitionError</cite></p></li>
+<li><p><cite>DuplicateTransitionError</cite></p></li>
+<li><p><cite>TransitionPatternNotFound</cite></p></li>
+<li><p><cite>TransitionMethodNotFound</cite></p></li>
+<li><p><cite>UnexpectedIndentationError</cite></p></li>
+<li><p><cite>TransitionCorrection</cite>: Raised to switch to another transition.</p></li>
+<li><p><cite>StateCorrection</cite>: Raised to switch to another state &amp; transition.</p></li>
+</ul>
+<p>Functions:</p>
+<ul class="simple">
+<li><p><cite>string2lines()</cite>: split a multi-line string into a list of one-line strings</p></li>
+</ul>
+<div class="section" id="how-to-use-this-module">
+<h2>How To Use This Module<a class="headerlink" href="#how-to-use-this-module" title="Permalink to this headline">¶</a></h2>
+<p>(See the individual classes, methods, and attributes for details.)</p>
+<ol class="arabic">
+<li><p>Import it: <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">statemachine</span></code> or <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">statemachine</span> <span class="pre">import</span> <span class="pre">...</span></code>.
+You will also need to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">re</span></code>.</p></li>
+<li><p>Derive a subclass of <cite>State</cite> (or <cite>StateWS</cite>) for each state in your state
+machine:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyState</span><span class="p">(</span><span class="n">statemachine</span><span class="o">.</span><span class="n">State</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>Within the state’s class definition:</p>
+<ol class="loweralpha">
+<li><p>Include a pattern for each transition, in <cite>State.patterns</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">patterns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;atransition&#39;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;pattern&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Include a list of initial transitions to be set up automatically, in
+<cite>State.initial_transitions</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">initial_transitions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;atransition&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Define a method for each transition, with the same name as the
+transition pattern:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">atransition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">match</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">next_state</span><span class="p">):</span>
+    <span class="c1"># do something</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>  <span class="c1"># a list</span>
+    <span class="k">return</span> <span class="n">context</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">result</span>
+    <span class="c1"># context, next_state may be altered</span>
+</pre></div>
+</div>
+<p>Transition methods may raise an <cite>EOFError</cite> to cut processing short.</p>
+</li>
+<li><p>You may wish to override the <cite>State.bof()</cite> and/or <cite>State.eof()</cite> implicit
+transition methods, which handle the beginning- and end-of-file.</p></li>
+<li><p>In order to handle nested processing, you may wish to override the
+attributes <cite>State.nested_sm</cite> and/or <cite>State.nested_sm_kwargs</cite>.</p>
+<p>If you are using <cite>StateWS</cite> as a base class, in order to handle nested
+indented blocks, you may wish to:</p>
+<ul class="simple">
+<li><p>override the attributes <cite>StateWS.indent_sm</cite>,
+<cite>StateWS.indent_sm_kwargs</cite>, <cite>StateWS.known_indent_sm</cite>, and/or
+<cite>StateWS.known_indent_sm_kwargs</cite>;</p></li>
+<li><p>override the <cite>StateWS.blank()</cite> method; and/or</p></li>
+<li><p>override or extend the <cite>StateWS.indent()</cite>, <cite>StateWS.known_indent()</cite>,
+and/or <cite>StateWS.firstknown_indent()</cite> methods.</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>Create a state machine object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sm</span> <span class="o">=</span> <span class="n">StateMachine</span><span class="p">(</span><span class="n">state_classes</span><span class="o">=</span><span class="p">[</span><span class="n">MyState</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+                  <span class="n">initial_state</span><span class="o">=</span><span class="s1">&#39;MyState&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Obtain the input text, which needs to be converted into a tab-free list of
+one-line strings. For example, to read text from a file called
+‘inputfile’:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">input_string</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;inputfile&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">input_lines</span> <span class="o">=</span> <span class="n">statemachine</span><span class="o">.</span><span class="n">string2lines</span><span class="p">(</span><span class="n">input_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the state machine on the input text and collect the results, a list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">input_lines</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Remove any lingering circular references:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sm</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<dl class="exception">
+<dt id="statemachine.DuplicateStateError">
+<em class="property">exception </em><code class="descclassname">statemachine.</code><code class="descname">DuplicateStateError</code><a class="headerlink" href="#statemachine.DuplicateStateError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="statemachine.DuplicateTransitionError">
+<em class="property">exception </em><code class="descclassname">statemachine.</code><code class="descname">DuplicateTransitionError</code><a class="headerlink" href="#statemachine.DuplicateTransitionError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="statemachine.SearchStateMachine">
+<em class="property">class </em><code class="descclassname">statemachine.</code><code class="descname">SearchStateMachine</code><span class="sig-paren">(</span><em>state_classes</em>, <em>initial_state</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.SearchStateMachine" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>StateMachine</cite> which uses <cite>re.search()</cite> instead of <cite>re.match()</cite>.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="statemachine.SearchStateMachineWS">
+<em class="property">class </em><code class="descclassname">statemachine.</code><code class="descname">SearchStateMachineWS</code><span class="sig-paren">(</span><em>state_classes</em>, <em>initial_state</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.SearchStateMachineWS" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>StateMachineWS</cite> which uses <cite>re.search()</cite> instead of <cite>re.match()</cite>.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="statemachine.State">
+<em class="property">class </em><code class="descclassname">statemachine.</code><code class="descname">State</code><span class="sig-paren">(</span><em>state_machine</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.State" title="Permalink to this definition">¶</a></dt>
+<dd><p>State superclass. Contains a list of transitions, and transition methods.</p>
+<p>Transition methods all have the same signature. They take 3 parameters:</p>
+<ul class="simple">
+<li><p>An <cite>re</cite> match object. <code class="docutils literal notranslate"><span class="pre">match.string</span></code> contains the matched input line,
+<code class="docutils literal notranslate"><span class="pre">match.start()</span></code> gives the start index of the match, and
+<code class="docutils literal notranslate"><span class="pre">match.end()</span></code> gives the end index.</p></li>
+<li><p>A context object, whose meaning is application-defined (initial value
+<code class="docutils literal notranslate"><span class="pre">None</span></code>). It can be used to store any information required by the state
+machine, and the retured context is passed on to the next transition
+method unchanged.</p></li>
+<li><p>The name of the next state, a string, taken from the transitions list;
+normally it is returned unchanged, but it may be altered by the
+transition method if necessary.</p></li>
+</ul>
+<p>Transition methods all return a 3-tuple:</p>
+<ul class="simple">
+<li><p>A context object, as (potentially) modified by the transition method.</p></li>
+<li><p>The next state name (a return value of <code class="docutils literal notranslate"><span class="pre">None</span></code> means no state change).</p></li>
+<li><p>The processing result, a list, which is accumulated by the state
+machine.</p></li>
+</ul>
+<p>Transition methods may raise an <cite>EOFError</cite> to cut processing short.</p>
+<p>There are two implicit transitions, and corresponding transition methods
+are defined: <cite>bof()</cite> handles the beginning-of-file, and <cite>eof()</cite> handles
+the end-of-file. These methods have non-standard signatures and return
+values. <cite>bof()</cite> returns the initial context and results, and may be used
+to return a header string, or do any other processing needed. <cite>eof()</cite>
+should handle any remaining context and wrap things up; it returns the
+final processing result.</p>
+<p>Typical applications need only subclass <cite>State</cite> (or a subclass), set the
+<cite>patterns</cite> and <cite>initial_transitions</cite> class attributes, and provide
+corresponding transition methods. The default object initialization will
+take care of constructing the list of transitions.</p>
+<dl class="method">
+<dt id="statemachine.State.add_initial_transitions">
+<code class="descname">add_initial_transitions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.State.add_initial_transitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make and add transitions listed in <cite>self.initial_transitions</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.State.add_transition">
+<code class="descname">add_transition</code><span class="sig-paren">(</span><em>name</em>, <em>transition</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.State.add_transition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a transition to the start of the transition list.</p>
+<p>Parameter <cite>transition</cite>: a ready-made transition 3-tuple.</p>
+<p>Exception: <cite>DuplicateTransitionError</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.State.add_transitions">
+<code class="descname">add_transitions</code><span class="sig-paren">(</span><em>names</em>, <em>transitions</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.State.add_transitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a list of transitions to the start of the transition list.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><cite>names</cite>: a list of transition names.</p></li>
+<li><p><cite>transitions</cite>: a mapping of names to transition tuples.</p></li>
+</ul>
+<p>Exceptions: <cite>DuplicateTransitionError</cite>, <cite>UnknownTransitionError</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.State.bof">
+<code class="descname">bof</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.State.bof" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle beginning-of-file. Return unchanged <cite>context</cite>, empty result.</p>
+<p>Override in subclasses.</p>
+<p>Parameter <cite>context</cite>: application-defined storage.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.State.debug">
+<code class="descname">debug</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.State.debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Debugging mode on/off.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.State.eof">
+<code class="descname">eof</code><span class="sig-paren">(</span><em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.State.eof" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle end-of-file. Return empty result.</p>
+<p>Override in subclasses.</p>
+<p>Parameter <cite>context</cite>: application-defined storage.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.State.initial_transitions">
+<code class="descname">initial_transitions</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.State.initial_transitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of transitions to initialize when a <cite>State</cite> is instantiated.
+Each entry is either a transition name string, or a (transition name, next
+state name) pair. See <cite>make_transitions()</cite>. Override in subclasses.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.State.make_transition">
+<code class="descname">make_transition</code><span class="sig-paren">(</span><em>name</em>, <em>next_state=None</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.State.make_transition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make &amp; return a transition tuple based on <cite>name</cite>.</p>
+<p>This is a convenience function to simplify transition creation.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><cite>name</cite>: a string, the name of the transition pattern &amp; method. This
+<cite>State</cite> object must have a method called ‘<cite>name</cite>’, and a dictionary
+<cite>self.patterns</cite> containing a key ‘<cite>name</cite>’.</p></li>
+<li><p><cite>next_state</cite>: a string, the name of the next <cite>State</cite> object for this
+transition. A value of <code class="docutils literal notranslate"><span class="pre">None</span></code> (or absent) implies no state change
+(i.e., continue with the same state).</p></li>
+</ul>
+<p>Exceptions: <cite>TransitionPatternNotFound</cite>, <cite>TransitionMethodNotFound</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.State.make_transitions">
+<code class="descname">make_transitions</code><span class="sig-paren">(</span><em>name_list</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.State.make_transitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of transition names and a transition mapping.</p>
+<p>Parameter <cite>name_list</cite>: a list, where each entry is either a transition
+name string, or a 1- or 2-tuple (transition name, optional next state
+name).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.State.nested_sm">
+<code class="descname">nested_sm</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.State.nested_sm" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>StateMachine</cite> class for handling nested processing.</p>
+<p>If left as <code class="docutils literal notranslate"><span class="pre">None</span></code>, <cite>nested_sm</cite> defaults to the class of the state’s
+controlling state machine. Override it in subclasses to avoid the default.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.State.nested_sm_kwargs">
+<code class="descname">nested_sm_kwargs</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.State.nested_sm_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keyword arguments dictionary, passed to the <cite>nested_sm</cite> constructor.</p>
+<p>Two keys must have entries in the dictionary:</p>
+<ul class="simple">
+<li><p>Key ‘state_classes’ must be set to a list of <cite>State</cite> classes.</p></li>
+<li><p>Key ‘initial_state’ must be set to the name of the initial state class.</p></li>
+</ul>
+<p>If <cite>nested_sm_kwargs</cite> is left as <code class="docutils literal notranslate"><span class="pre">None</span></code>, ‘state_classes’ defaults to the
+class of the current state, and ‘initial_state’ defaults to the name of
+the class of the current state. Override in subclasses to avoid the
+defaults.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.State.no_match">
+<code class="descname">no_match</code><span class="sig-paren">(</span><em>context</em>, <em>transitions</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.State.no_match" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when there is no match from <cite>StateMachine.check_line()</cite>.</p>
+<p>Return the same values returned by transition methods:</p>
+<ul class="simple">
+<li><p>context: unchanged;</p></li>
+<li><p>next state name: <code class="docutils literal notranslate"><span class="pre">None</span></code>;</p></li>
+<li><p>empty result list.</p></li>
+</ul>
+<p>Override in subclasses to catch this event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.State.nop">
+<code class="descname">nop</code><span class="sig-paren">(</span><em>match</em>, <em>context</em>, <em>next_state</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.State.nop" title="Permalink to this definition">¶</a></dt>
+<dd><p>A “do nothing” transition method.</p>
+<p>Return unchanged <cite>context</cite> &amp; <cite>next_state</cite>, empty result. Useful for
+simple state changes (actionless transitions).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.State.patterns">
+<code class="descname">patterns</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.State.patterns" title="Permalink to this definition">¶</a></dt>
+<dd><p>{Name: pattern} mapping, used by <cite>make_transition()</cite>. Each pattern may
+be a string or a compiled <cite>re</cite> pattern. Override in subclasses.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.State.remove_transition">
+<code class="descname">remove_transition</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.State.remove_transition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a transition by <cite>name</cite>.</p>
+<p>Exception: <cite>UnknownTransitionError</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.State.runtime_init">
+<code class="descname">runtime_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.State.runtime_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize this <cite>State</cite> before running the state machine; called from
+<cite>self.state_machine.run()</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.State.state_machine">
+<code class="descname">state_machine</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.State.state_machine" title="Permalink to this definition">¶</a></dt>
+<dd><p>A reference to the controlling <cite>StateMachine</cite> object.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.State.transition_order">
+<code class="descname">transition_order</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.State.transition_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of transition names in search order.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.State.transitions">
+<code class="descname">transitions</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.State.transitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>A mapping of transition names to 3-tuples containing
+(compiled_pattern, transition_method, next_state_name). Initialized as
+an instance attribute dynamically (instead of as a class attribute)
+because it may make forward references to patterns and methods in this
+or other classes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.State.unlink">
+<code class="descname">unlink</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.State.unlink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove circular references to objects no longer required.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="statemachine.StateCorrection">
+<em class="property">exception </em><code class="descclassname">statemachine.</code><code class="descname">StateCorrection</code><a class="headerlink" href="#statemachine.StateCorrection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise from within a transition method to switch to another state.</p>
+<p>Raise with one or two arguments: new state name, and an optional new
+transition name.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="statemachine.StateMachine">
+<em class="property">class </em><code class="descclassname">statemachine.</code><code class="descname">StateMachine</code><span class="sig-paren">(</span><em>state_classes</em>, <em>initial_state</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine" title="Permalink to this definition">¶</a></dt>
+<dd><p>A finite state machine for text filters using regular expressions.</p>
+<p>The input is provided in the form of a list of one-line strings (no
+newlines). States are subclasses of the <cite>State</cite> class. Transitions consist
+of regular expression patterns and transition methods, and are defined in
+each state.</p>
+<p>The state machine is started with the <cite>run()</cite> method, which returns the
+results of processing in a list.</p>
+<dl class="method">
+<dt id="statemachine.StateMachine.abs_line_number">
+<code class="descname">abs_line_number</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.abs_line_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return line number of current line (counting from 1).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.abs_line_offset">
+<code class="descname">abs_line_offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.abs_line_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return line offset of current line, from beginning of file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.add_state">
+<code class="descname">add_state</code><span class="sig-paren">(</span><em>state_class</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.add_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize &amp; add a <cite>state_class</cite> (<cite>State</cite> subclass) object.</p>
+<p>Exception: <cite>DuplicateStateError</cite> raised if <cite>state_class</cite> was already
+added.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.add_states">
+<code class="descname">add_states</code><span class="sig-paren">(</span><em>state_classes</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.add_states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add <cite>state_classes</cite> (a list of <cite>State</cite> subclasses).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.at_bof">
+<code class="descname">at_bof</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.at_bof" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return 1 if the input is at or before beginning-of-file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.at_eof">
+<code class="descname">at_eof</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.at_eof" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return 1 if the input is at or past end-of-file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.attach_observer">
+<code class="descname">attach_observer</code><span class="sig-paren">(</span><em>observer</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.attach_observer" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>observer</cite> parameter is a function or bound method which takes two
+arguments, the source and offset of the current line.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.check_line">
+<code class="descname">check_line</code><span class="sig-paren">(</span><em>context</em>, <em>state</em>, <em>transitions=None</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.check_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Examine one line of input for a transition match &amp; execute its method.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><cite>context</cite>: application-dependent storage.</p></li>
+<li><p><cite>state</cite>: a <cite>State</cite> object, the current state.</p></li>
+<li><p><cite>transitions</cite>: an optional ordered list of transition names to try,
+instead of <code class="docutils literal notranslate"><span class="pre">state.transition_order</span></code>.</p></li>
+</ul>
+<p>Return the values returned by the transition method:</p>
+<ul class="simple">
+<li><p>context: possibly modified from the parameter <cite>context</cite>;</p></li>
+<li><p>next state name (<cite>State</cite> subclass name);</p></li>
+<li><p>the result output of the transition, a list.</p></li>
+</ul>
+<p>When there is no match, <code class="docutils literal notranslate"><span class="pre">state.no_match()</span></code> is called and its return
+value is returned.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.StateMachine.current_state">
+<code class="descname">current_state</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.StateMachine.current_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the current state (key to <cite>self.states</cite>).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.StateMachine.debug">
+<code class="descname">debug</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.StateMachine.debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Debugging mode on/off.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.error">
+<code class="descname">error</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report error details.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.get_source">
+<code class="descname">get_source</code><span class="sig-paren">(</span><em>line_offset</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.get_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return source of line at absolute line offset <cite>line_offset</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.get_source_and_line">
+<code class="descname">get_source_and_line</code><span class="sig-paren">(</span><em>lineno=None</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.get_source_and_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return (source, line) tuple for current or given line number.</p>
+<p>Looks up the source and line number in the <cite>self.input_lines</cite>
+StringList instance to count for included source files.</p>
+<p>If the optional argument <cite>lineno</cite> is given, convert it from an
+absolute line number to the corresponding (source, line) pair.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.get_state">
+<code class="descname">get_state</code><span class="sig-paren">(</span><em>next_state=None</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.get_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return current state object; set it first if <cite>next_state</cite> given.</p>
+<p>Parameter <cite>next_state</cite>: a string, the name of the next state.</p>
+<p>Exception: <cite>UnknownStateError</cite> raised if <cite>next_state</cite> unknown.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.get_text_block">
+<code class="descname">get_text_block</code><span class="sig-paren">(</span><em>flush_left=False</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.get_text_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a contiguous block of text.</p>
+<p>If <cite>flush_left</cite> is true, raise <cite>UnexpectedIndentationError</cite> if an
+indented line is encountered before the text block ends (with a blank
+line).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.goto_line">
+<code class="descname">goto_line</code><span class="sig-paren">(</span><em>line_offset</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.goto_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Jump to absolute line offset <cite>line_offset</cite>, load and return it.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.StateMachine.initial_state">
+<code class="descname">initial_state</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.StateMachine.initial_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the initial state (key to <cite>self.states</cite>).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.StateMachine.input_lines">
+<code class="descname">input_lines</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.StateMachine.input_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>StringList</cite> of input lines (without newlines).
+Filled by <cite>self.run()</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.StateMachine.input_offset">
+<code class="descname">input_offset</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.StateMachine.input_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Offset of <cite>self.input_lines</cite> from the beginning of the file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.is_next_line_blank">
+<code class="descname">is_next_line_blank</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.is_next_line_blank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return 1 if the next line is blank or non-existant.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.StateMachine.line">
+<code class="descname">line</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.StateMachine.line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Current input line.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.StateMachine.line_offset">
+<code class="descname">line_offset</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.StateMachine.line_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Current input line offset from beginning of <cite>self.input_lines</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.next_line">
+<code class="descname">next_line</code><span class="sig-paren">(</span><em>n=1</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.next_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load <cite>self.line</cite> with the <cite>n</cite>’th next line and return it.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.StateMachine.observers">
+<code class="descname">observers</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.StateMachine.observers" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of bound methods or functions to call whenever the current
+line changes.  Observers are called with one argument, <code class="docutils literal notranslate"><span class="pre">self</span></code>.
+Cleared at the end of <cite>run()</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.previous_line">
+<code class="descname">previous_line</code><span class="sig-paren">(</span><em>n=1</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.previous_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load <cite>self.line</cite> with the <cite>n</cite>’th previous line and return it.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>input_lines</em>, <em>input_offset=0</em>, <em>context=None</em>, <em>input_source=None</em>, <em>initial_state=None</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the state machine on <cite>input_lines</cite>. Return results (a list).</p>
+<p>Reset <cite>self.line_offset</cite> and <cite>self.current_state</cite>. Run the
+beginning-of-file transition. Input one line at a time and check for a
+matching transition. If a match is found, call the transition method
+and possibly change the state. Store the context returned by the
+transition method to be passed on to the next transition matched.
+Accumulate the results returned by the transition methods in a list.
+Run the end-of-file transition. Finally, return the accumulated
+results.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><cite>input_lines</cite>: a list of strings without newlines, or <cite>StringList</cite>.</p></li>
+<li><p><cite>input_offset</cite>: the line offset of <cite>input_lines</cite> from the beginning
+of the file.</p></li>
+<li><p><cite>context</cite>: application-specific storage.</p></li>
+<li><p><cite>input_source</cite>: name or path of source of <cite>input_lines</cite>.</p></li>
+<li><p><cite>initial_state</cite>: name of initial state.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.runtime_init">
+<code class="descname">runtime_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.runtime_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize <cite>self.states</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.StateMachine.states">
+<code class="descname">states</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.StateMachine.states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mapping of {state_name: State_object}.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachine.unlink">
+<code class="descname">unlink</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachine.unlink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove circular references to objects no longer required.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="statemachine.StateMachineError">
+<em class="property">exception </em><code class="descclassname">statemachine.</code><code class="descname">StateMachineError</code><a class="headerlink" href="#statemachine.StateMachineError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="statemachine.StateMachineWS">
+<em class="property">class </em><code class="descclassname">statemachine.</code><code class="descname">StateMachineWS</code><span class="sig-paren">(</span><em>state_classes</em>, <em>initial_state</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachineWS" title="Permalink to this definition">¶</a></dt>
+<dd><p><cite>StateMachine</cite> subclass specialized for whitespace recognition.</p>
+<p>There are three methods provided for extracting indented text blocks:</p>
+<ul class="simple">
+<li><p><cite>get_indented()</cite>: use when the indent is unknown.</p></li>
+<li><p><cite>get_known_indented()</cite>: use when the indent is known for all lines.</p></li>
+<li><p><cite>get_first_known_indented()</cite>: use when only the first line’s indent is
+known.</p></li>
+</ul>
+<dl class="method">
+<dt id="statemachine.StateMachineWS.get_first_known_indented">
+<code class="descname">get_first_known_indented</code><span class="sig-paren">(</span><em>indent</em>, <em>until_blank=False</em>, <em>strip_indent=True</em>, <em>strip_top=True</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachineWS.get_first_known_indented" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an indented block and info.</p>
+<p>Extract an indented block where the indent is known for the first line
+and unknown for all other lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><cite>indent</cite>: The first line’s indent (# of columns/characters).</p></li>
+<li><p><cite>until_blank</cite>: Stop collecting at the first blank line if true
+(1).</p></li>
+<li><p><cite>strip_indent</cite>: Strip <cite>indent</cite> characters of indentation if true
+(1, default).</p></li>
+<li><p><cite>strip_top</cite>: Strip blank lines from the beginning of the block.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return</dt>
+<dd class="field-even"><ul class="simple">
+<li><p>the indented block,</p></li>
+<li><p>its indent,</p></li>
+<li><p>its first line offset from BOF, and</p></li>
+<li><p>whether or not it finished with a blank line.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachineWS.get_indented">
+<code class="descname">get_indented</code><span class="sig-paren">(</span><em>until_blank=False</em>, <em>strip_indent=True</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachineWS.get_indented" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a block of indented lines of text, and info.</p>
+<p>Extract an indented block where the indent is unknown for all lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><cite>until_blank</cite>: Stop collecting at the first blank line if true.</p></li>
+<li><p><cite>strip_indent</cite>: Strip common leading indent if true (default).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return</dt>
+<dd class="field-even"><ul class="simple">
+<li><p>the indented block (a list of lines of text),</p></li>
+<li><p>its indent,</p></li>
+<li><p>its first line offset from BOF, and</p></li>
+<li><p>whether or not it finished with a blank line.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateMachineWS.get_known_indented">
+<code class="descname">get_known_indented</code><span class="sig-paren">(</span><em>indent</em>, <em>until_blank=False</em>, <em>strip_indent=True</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateMachineWS.get_known_indented" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an indented block and info.</p>
+<p>Extract an indented block where the indent is known for all lines.
+Starting with the current line, extract the entire text block with at
+least <cite>indent</cite> indentation (which must be whitespace, except for the
+first line).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><cite>indent</cite>: The number of indent columns/characters.</p></li>
+<li><p><cite>until_blank</cite>: Stop collecting at the first blank line if true.</p></li>
+<li><p><cite>strip_indent</cite>: Strip <cite>indent</cite> characters of indentation if true
+(default).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return</dt>
+<dd class="field-even"><ul class="simple">
+<li><p>the indented block,</p></li>
+<li><p>its first line offset from BOF, and</p></li>
+<li><p>whether or not it finished with a blank line.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="statemachine.StateWS">
+<em class="property">class </em><code class="descclassname">statemachine.</code><code class="descname">StateWS</code><span class="sig-paren">(</span><em>state_machine</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateWS" title="Permalink to this definition">¶</a></dt>
+<dd><p>State superclass specialized for whitespace (blank lines &amp; indents).</p>
+<p>Use this class with <cite>StateMachineWS</cite>.  The transitions ‘blank’ (for blank
+lines) and ‘indent’ (for indented text blocks) are added automatically,
+before any other transitions.  The transition method <cite>blank()</cite> handles
+blank lines and <cite>indent()</cite> handles nested indented blocks.  Indented
+blocks trigger a new state machine to be created by <cite>indent()</cite> and run.
+The class of the state machine to be created is in <cite>indent_sm</cite>, and the
+constructor keyword arguments are in the dictionary <cite>indent_sm_kwargs</cite>.</p>
+<p>The methods <cite>known_indent()</cite> and <cite>firstknown_indent()</cite> are provided for
+indented blocks where the indent (all lines’ and first line’s only,
+respectively) is known to the transition method, along with the attributes
+<cite>known_indent_sm</cite> and <cite>known_indent_sm_kwargs</cite>.  Neither transition method
+is triggered automatically.</p>
+<dl class="method">
+<dt id="statemachine.StateWS.add_initial_transitions">
+<code class="descname">add_initial_transitions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateWS.add_initial_transitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add whitespace-specific transitions before those defined in subclass.</p>
+<p>Extends <cite>State.add_initial_transitions()</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateWS.blank">
+<code class="descname">blank</code><span class="sig-paren">(</span><em>match</em>, <em>context</em>, <em>next_state</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateWS.blank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle blank lines. Does nothing. Override in subclasses.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateWS.first_known_indent">
+<code class="descname">first_known_indent</code><span class="sig-paren">(</span><em>match</em>, <em>context</em>, <em>next_state</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateWS.first_known_indent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle an indented text block (first line’s indent known).</p>
+<p>Extend or override in subclasses.</p>
+<p>Recursively run the registered state machine for known-indent indented
+blocks (<cite>self.known_indent_sm</cite>). The indent is the length of the
+match, <code class="docutils literal notranslate"><span class="pre">match.end()</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateWS.indent">
+<code class="descname">indent</code><span class="sig-paren">(</span><em>match</em>, <em>context</em>, <em>next_state</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateWS.indent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle an indented text block. Extend or override in subclasses.</p>
+<p>Recursively run the registered state machine for indented blocks
+(<cite>self.indent_sm</cite>).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.StateWS.indent_sm">
+<code class="descname">indent_sm</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.StateWS.indent_sm" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>StateMachine</cite> class handling indented text blocks.</p>
+<p>If left as <code class="docutils literal notranslate"><span class="pre">None</span></code>, <cite>indent_sm</cite> defaults to the value of
+<cite>State.nested_sm</cite>.  Override it in subclasses to avoid the default.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.StateWS.indent_sm_kwargs">
+<code class="descname">indent_sm_kwargs</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.StateWS.indent_sm_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keyword arguments dictionary, passed to the <cite>indent_sm</cite> constructor.</p>
+<p>If left as <code class="docutils literal notranslate"><span class="pre">None</span></code>, <cite>indent_sm_kwargs</cite> defaults to the value of
+<cite>State.nested_sm_kwargs</cite>. Override it in subclasses to avoid the default.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StateWS.known_indent">
+<code class="descname">known_indent</code><span class="sig-paren">(</span><em>match</em>, <em>context</em>, <em>next_state</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StateWS.known_indent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle a known-indent text block. Extend or override in subclasses.</p>
+<p>Recursively run the registered state machine for known-indent indented
+blocks (<cite>self.known_indent_sm</cite>). The indent is the length of the
+match, <code class="docutils literal notranslate"><span class="pre">match.end()</span></code>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.StateWS.known_indent_sm">
+<code class="descname">known_indent_sm</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.StateWS.known_indent_sm" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>StateMachine</cite> class handling known-indented text blocks.</p>
+<p>If left as <code class="docutils literal notranslate"><span class="pre">None</span></code>, <cite>known_indent_sm</cite> defaults to the value of
+<cite>indent_sm</cite>.  Override it in subclasses to avoid the default.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.StateWS.known_indent_sm_kwargs">
+<code class="descname">known_indent_sm_kwargs</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.StateWS.known_indent_sm_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Keyword arguments dictionary, passed to the <cite>known_indent_sm</cite> constructor.</p>
+<p>If left as <code class="docutils literal notranslate"><span class="pre">None</span></code>, <cite>known_indent_sm_kwargs</cite> defaults to the value of
+<cite>indent_sm_kwargs</cite>. Override it in subclasses to avoid the default.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.StateWS.ws_initial_transitions">
+<code class="descname">ws_initial_transitions</code><em class="property"> = ('blank', 'indent')</em><a class="headerlink" href="#statemachine.StateWS.ws_initial_transitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default initial whitespace transitions, added before those listed in
+<cite>State.initial_transitions</cite>.  May be overridden in subclasses.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.StateWS.ws_patterns">
+<code class="descname">ws_patterns</code><em class="property"> = {'blank': ' *$', 'indent': ' +'}</em><a class="headerlink" href="#statemachine.StateWS.ws_patterns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Patterns for default whitespace transitions.  May be overridden in
+subclasses.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="statemachine.StringList">
+<em class="property">class </em><code class="descclassname">statemachine.</code><code class="descname">StringList</code><span class="sig-paren">(</span><em>initlist=None</em>, <em>source=None</em>, <em>items=None</em>, <em>parent=None</em>, <em>parent_offset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StringList" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <cite>ViewList</cite> with string-specific methods.</p>
+<dl class="method">
+<dt id="statemachine.StringList.get_indented">
+<code class="descname">get_indented</code><span class="sig-paren">(</span><em>start=0</em>, <em>until_blank=False</em>, <em>strip_indent=True</em>, <em>block_indent=None</em>, <em>first_indent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StringList.get_indented" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract and return a StringList of indented lines of text.</p>
+<p>Collect all lines with indentation, determine the minimum indentation,
+remove the minimum indentation from all indented lines (unless
+<cite>strip_indent</cite> is false), and return them. All lines up to but not
+including the first unindented line will be returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><cite>start</cite>: The index of the first line to examine.</p></li>
+<li><p><cite>until_blank</cite>: Stop collecting at the first blank line if true.</p></li>
+<li><p><cite>strip_indent</cite>: Strip common leading indent if true (default).</p></li>
+<li><p><cite>block_indent</cite>: The indent of the entire block, if known.</p></li>
+<li><p><cite>first_indent</cite>: The indent of the first line, if known.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return</dt>
+<dd class="field-even"><ul class="simple">
+<li><p>a StringList of indented lines with mininum indent removed;</p></li>
+<li><p>the amount of the indent;</p></li>
+<li><p>a boolean: did the indented block finish with a blank line or EOF?</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StringList.get_text_block">
+<code class="descname">get_text_block</code><span class="sig-paren">(</span><em>start</em>, <em>flush_left=False</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StringList.get_text_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a contiguous block of text.</p>
+<p>If <cite>flush_left</cite> is true, raise <cite>UnexpectedIndentationError</cite> if an
+indented line is encountered before the text block ends (with a blank
+line).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StringList.pad_double_width">
+<code class="descname">pad_double_width</code><span class="sig-paren">(</span><em>pad_char</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StringList.pad_double_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pad all double-width characters in self by appending <cite>pad_char</cite> to each.
+For East Asian language support.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StringList.replace">
+<code class="descname">replace</code><span class="sig-paren">(</span><em>old</em>, <em>new</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StringList.replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace all occurrences of substring <cite>old</cite> with <cite>new</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.StringList.trim_left">
+<code class="descname">trim_left</code><span class="sig-paren">(</span><em>length</em>, <em>start=0</em>, <em>end=9223372036854775807</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.StringList.trim_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trim <cite>length</cite> characters off the beginning of each item, in-place,
+from index <cite>start</cite> to <cite>end</cite>.  No whitespace-checking is done on the
+trimmed text.  Does not affect slice parent.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="statemachine.TransitionCorrection">
+<em class="property">exception </em><code class="descclassname">statemachine.</code><code class="descname">TransitionCorrection</code><a class="headerlink" href="#statemachine.TransitionCorrection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raise from within a transition method to switch to another transition.</p>
+<p>Raise with one argument, the new transition name.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="statemachine.TransitionMethodNotFound">
+<em class="property">exception </em><code class="descclassname">statemachine.</code><code class="descname">TransitionMethodNotFound</code><a class="headerlink" href="#statemachine.TransitionMethodNotFound" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="statemachine.TransitionPatternNotFound">
+<em class="property">exception </em><code class="descclassname">statemachine.</code><code class="descname">TransitionPatternNotFound</code><a class="headerlink" href="#statemachine.TransitionPatternNotFound" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="statemachine.UnexpectedIndentationError">
+<em class="property">exception </em><code class="descclassname">statemachine.</code><code class="descname">UnexpectedIndentationError</code><a class="headerlink" href="#statemachine.UnexpectedIndentationError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="statemachine.UnknownStateError">
+<em class="property">exception </em><code class="descclassname">statemachine.</code><code class="descname">UnknownStateError</code><a class="headerlink" href="#statemachine.UnknownStateError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="statemachine.UnknownTransitionError">
+<em class="property">exception </em><code class="descclassname">statemachine.</code><code class="descname">UnknownTransitionError</code><a class="headerlink" href="#statemachine.UnknownTransitionError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="statemachine.ViewList">
+<em class="property">class </em><code class="descclassname">statemachine.</code><code class="descname">ViewList</code><span class="sig-paren">(</span><em>initlist=None</em>, <em>source=None</em>, <em>items=None</em>, <em>parent=None</em>, <em>parent_offset=None</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.ViewList" title="Permalink to this definition">¶</a></dt>
+<dd><p>List with extended functionality: slices of ViewList objects are child
+lists, linked to their parents. Changes made to a child list also affect
+the parent list.  A child list is effectively a “view” (in the SQL sense)
+of the parent list.  Changes to parent lists, however, do <em>not</em> affect
+active child lists.  If a parent list is changed, any active child lists
+should be recreated.</p>
+<p>The start and end of the slice can be trimmed using the <cite>trim_start()</cite> and
+<cite>trim_end()</cite> methods, without affecting the parent list.  The link between
+child and parent lists can be broken by calling <cite>disconnect()</cite> on the
+child list.</p>
+<p>Also, ViewList objects keep track of the source &amp; offset of each item.
+This information is accessible via the <cite>source()</cite>, <cite>offset()</cite>, and
+<cite>info()</cite> methods.</p>
+<dl class="attribute">
+<dt id="statemachine.ViewList.data">
+<code class="descname">data</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.ViewList.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>The actual list of data, flattened from various sources.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.ViewList.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.ViewList.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Break link between this list and parent list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.ViewList.info">
+<code class="descname">info</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.ViewList.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return source &amp; offset for index <cite>i</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.ViewList.items">
+<code class="descname">items</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.ViewList.items" title="Permalink to this definition">¶</a></dt>
+<dd><p>A list of (source, offset) pairs, same length as <cite>self.data</cite>: the
+source of each line and the offset of each line from the beginning of
+its source.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.ViewList.offset">
+<code class="descname">offset</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.ViewList.offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return offset for index <cite>i</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.ViewList.parent">
+<code class="descname">parent</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.ViewList.parent" title="Permalink to this definition">¶</a></dt>
+<dd><p>The parent list.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="statemachine.ViewList.parent_offset">
+<code class="descname">parent_offset</code><em class="property"> = None</em><a class="headerlink" href="#statemachine.ViewList.parent_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Offset of this list from the beginning of the parent list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.ViewList.pprint">
+<code class="descname">pprint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.ViewList.pprint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the list in <cite>grep</cite> format (<cite>source:offset:value</cite> lines)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.ViewList.source">
+<code class="descname">source</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.ViewList.source" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return source for index <cite>i</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.ViewList.trim_end">
+<code class="descname">trim_end</code><span class="sig-paren">(</span><em>n=1</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.ViewList.trim_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove items from the end of the list, without touching the parent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.ViewList.trim_start">
+<code class="descname">trim_start</code><span class="sig-paren">(</span><em>n=1</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.ViewList.trim_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove items from the start of the list, without touching the parent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="statemachine.ViewList.xitems">
+<code class="descname">xitems</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.ViewList.xitems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return iterator yielding (source, offset, value) tuples.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="statemachine.string2lines">
+<code class="descclassname">statemachine.</code><code class="descname">string2lines</code><span class="sig-paren">(</span><em>astring</em>, <em>tab_width=8</em>, <em>convert_whitespace=False</em>, <em>whitespace=re.compile('[\x0b\x0c]')</em><span class="sig-paren">)</span><a class="headerlink" href="#statemachine.string2lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of one-line strings with tabs expanded, no newlines, and
+trailing whitespace stripped.</p>
+<p>Each tab is expanded with between 1 and <cite>tab_width</cite> spaces, so that the
+next character’s index becomes a multiple of <cite>tab_width</cite> (8 by default).</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><cite>astring</cite>: a multi-line string.</p></li>
+<li><p><cite>tab_width</cite>: the number of columns between tab stops.</p></li>
+<li><p><cite>convert_whitespace</cite>: convert form feeds and vertical tabs to spaces?</p></li>
+</ul>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>This is the introduction of demo。</p>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Test</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beginning/index.html">入门篇</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base/index.html">Welcome to demo’s API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base/index.html#introduction">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base/index.html#indices-and-tables">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/index.html">Welcome to demo’s API Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/index.html#introduction">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool/index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="beginning/index.html" title="next chapter">入门篇</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, sdk.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
