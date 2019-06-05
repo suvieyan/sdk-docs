@@ -1,16 +1,12 @@
-Welcome to demo's API Documentation
-===================================
+Python进阶篇
+===============
+
+这一部分是介绍Python相关知识
+
 
 .. toctree::
     :maxdepth: 2
-    :glob:
+    :numbered: 2
 
-Introduction
-============
-This is the introduction of demo。
-
-Indices and tables
-==================
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+    01_pythonstart
+    02_pythonfunc

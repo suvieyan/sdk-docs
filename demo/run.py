@@ -1,7 +1,8 @@
 # run.py
 def run(name):
     """
-    Just a test 
-    @namne: User denfine
+    Just a tet
+    :param name: String
+    :return:
     """
     print(name+'is running')

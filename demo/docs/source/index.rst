@@ -9,8 +9,6 @@ Welcome to demo's API Documentation
     base/index
     tool/index
 
-.. automodule:: statemachine
-   :members:
 
 Introduction
 ============
