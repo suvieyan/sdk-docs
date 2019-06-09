@@ -5,9 +5,8 @@ Welcome to demo's API Documentation
     :maxdepth: 2
     :glob:
     
-    beginning/index
-    base/index
-    tool/index
+    01python_learnning/index
+    02datastruct/index
 
 
 Introduction
