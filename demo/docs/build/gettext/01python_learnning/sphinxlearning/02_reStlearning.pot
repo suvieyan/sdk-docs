@@ -1,0 +1,565 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, sdk
+# This file is distributed under the same license as the Test package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Test \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-08 14:29+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:3
+msgid "RST (reStructuredText) 语法示例"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:4
+msgid "**Created** : 2019/01/06;"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:12
+msgid "这里展示一些常用的RST语法. 黄色的块内是源代码, 紧接着的是渲染后的内容. 详细的用法可以参考:"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:18
+msgid "`Quick reStructuredText <http://docutils.sourceforge.net/docs/user/rst/quickref.html>`_"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:19
+msgid "`ReStructuredText介绍 <https://docutils-zh-cn.readthedocs.io/zh_CN/latest/user/rst/quickstart.html>`_"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:23
+msgid "`reStructuredText标记规范 <https://docutils-zh-cn.readthedocs.io/zh_CN/latest/ref/rst/restructuredtext.html>`_"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:32
+msgid "文本样式"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:45
+msgid "*斜体*"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:46
+msgid "前后需要 **空格** 才有 **加粗** 效果"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:47
+msgid "``行内代码``"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:49
+msgid "分割符"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:53
+msgid "分割符是水平的横线，是由>4个的 ``-`` 组成，需要添加换行."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:56
+msgid "标题"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:82
+msgid "不同等级的标题, 不是根据符号区分, 而是根据出现的顺序自动parsing."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:85
+msgid "二级标题"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:86
+msgid "上面这个是二级标题"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:89
+msgid "三级标题"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:92
+msgid "四级标题"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:95
+msgid "五级标题"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:98
+msgid "六级标题"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:99
+msgid "使用其他符号 ``= - ` : ' \" ~ ^ _  *  + # < >`` 也可以"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:102
+msgid "段落"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:103
+msgid "# 空行分段 ::"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:110
+msgid "# 回车自动续行"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:117
+msgid "# ？？？？？？？？？？？？ ::"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:126
+msgid "空一行是表示新起一个段落. 段落之间间距较大, 若是有关联的换行, 考虑 **列表** ."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:128
+msgid "可以使用缩进, 表示缩进的段落"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:130
+msgid "可以连续使用缩进"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:133
+msgid "列表"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:136
+msgid "有序列表"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:150
+msgid "枚举的类型有:"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:152
+msgid "阿拉伯数组: 1, 2, 3 ..."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:153
+msgid "大小写字母: A-Z 或 a-z"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:154
+msgid "大小写罗马字母: I, II, III, iV, ... 或 i, ii, iii, iv ..."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:155
+msgid "使用 **#** 自动生成枚举序号, 可以从任一数字开始"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:157
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:173
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:241
+msgid "xxx"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:158
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:242
+msgid "yyy"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:159
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:243
+msgid "zzz"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:162
+msgid "无序列表"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:172
+msgid "可以使用 ``* + -`` 表示"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:175
+msgid "没有空一行的话, xxx会加粗; 反之不会"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:176
+msgid "缩进表示二级列表"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:177
+msgid "Again一级列表, 不需要空行"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:180
+msgid "块 (Blocks)"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:183
+msgid "文本块 (Literal Blocks)"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:197
+msgid "代码块"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:207
+msgid "linenos可以打开line number."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:217
+msgid "文档测试块 (Doctest Blocks)"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:218
+msgid "文档测试块是交互式的Python会话，以 ``>>>`` 开始，一个空行结束。"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:224
+msgid "注解, 提示块"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:239
+msgid "这是注解. note会执行(替换下面的#号), 但是单纯的文本块::不会."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:245
+msgid "块都支持缩进显示:"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:247
+msgid "这里是缩进的提示内容."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:250
+msgid "行块 (Line Blocks)"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:263
+msgid "行块使用 ``|``, 前后各有一个空格."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:267
+msgid "下面是行块内容："
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:0
+msgid "和缩进的区别"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:0
+msgid "间距是行距"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:269
+msgid "而缩进:"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:271
+msgid "缩进的间距是段落间距."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:273
+msgid "上面这个间距很大."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:276
+msgid "数学公式块"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:283
+msgid "*Latex* 格式."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:285
+msgid "\\ell(x, y) = L = \\{l_1,\\dots,l_N\\}^\\top, \\quad l_n = \\left( x_n - y_n \\right)^2."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:290
+msgid "插入链接"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:300
+msgid "外部链接"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:301
+msgid "详细内容请参考 `reStructuredText Primer <http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`_."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:302
+msgid "内部链接"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:303
+msgid "回到Section - :ref:`top-reference-label`."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:305
+msgid "隐式超链接"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:305
+msgid "标题、脚注和引用参考会自动生成超链接地址. 隐式链接到 `块 (Blocks)`_."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:308
+msgid "插入图片"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:316
+msgid "This is the caption of the figure (a simple paragraph)."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:326
+msgid "插入表格"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:327
+msgid "对表格的支持总体不是很好."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:329
+msgid "1. 简单表格. 来自 `Open-ReID <https://cysu.github.io/open-reid/examples/benchmarks.html>`_ 的例子. ::"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:343
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:372
+msgid "渲染效果:"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:346
+msgid "Net"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:346
+msgid "Loss"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:346
+msgid "Mean AP"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:346
+msgid "CMC allshots"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:346
+msgid "CMC cuhk03"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:346
+msgid "CMC market1501"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:348
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:349
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:350
+msgid "Inception"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:348
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:351
+msgid "Triplet"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:348
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:348
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:348
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:348
+msgid "N/A"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:349
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:352
+msgid "Softmax"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:349
+msgid "65.8"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:349
+msgid "48.6"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:349
+msgid "73.2"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:349
+msgid "71.0"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:350
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:353
+msgid "OIM"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:350
+msgid "71.4"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:350
+msgid "56.0"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:350
+msgid "77.7"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:350
+msgid "76.5"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:351
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:352
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:353
+msgid "ResNet-50"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:351
+msgid "**80.7**"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:351
+msgid "**67.9**"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:351
+msgid "**84.3**"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:351
+msgid "**85.0**"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:352
+msgid "62.7"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:352
+msgid "44.6"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:352
+msgid "70.8"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:352
+msgid "69.0"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:353
+msgid "72.5"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:353
+msgid "58.2"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:353
+msgid "77.5"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:353
+msgid "79.2"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:356
+msgid "2. 网格表. 可以使用 `Tables Generator <https://www.tablesgenerator.com/text_tables>`_ 来生成. 但是center不是很容易. ::"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:375
+msgid "Header row, column 1 (header rows optional)"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:375
+msgid "Header 2"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:375
+msgid "Header 3"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:375
+msgid "Header 4"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:378
+msgid "body row 1, column 1"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:378
+msgid "column 2"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:378
+msgid "column 3"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:378
+msgid "column 4"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:380
+msgid "body row 2"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:380
+msgid "Cells may span columns."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:382
+msgid "body row 3"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:382
+msgid "Cells may span rows."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:382
+msgid "Table cells"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:383
+msgid "contain"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:384
+msgid "body elements."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:384
+msgid "body row 4"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:388
+msgid "引用/脚注"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:399
+msgid "Lorem ipsum [#f1]_ dolor sit amet ... [#xx]_"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:403
+msgid "References"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:404
+msgid "Text of the first footnote."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:405
+msgid "Text of the second footnote."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:408
+msgid "注释"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/02_reStlearning.rst:409
+msgid "注释以 .. 开头，后面接注释内容. 多行时每行需要对齐."
+msgstr ""
+

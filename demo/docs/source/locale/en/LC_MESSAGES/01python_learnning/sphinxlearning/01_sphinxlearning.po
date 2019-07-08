@@ -1,0 +1,183 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019, sdk
+# This file is distributed under the same license as the Test package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Test \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-08 14:29+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:3
+msgid "Sphinx自动生成文档"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:4
+msgid "**Created** : 2019/06/06;"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:6
+msgid ""
+"使用Python的 `Sphinx <http://www.sphinx-doc.org/en/master/>`_ 自动生成文档. "
+"一个完整的工具链: Sphinx + GitHub + Read the Docs: "
+"用Sphinx生成文档，GitHub托管文档，再导入到Read the Docs (或个人主页)."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:8
+msgid "有两个应用场景:"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:10
+msgid "记录一些知识点, 比如这个Doc; 编写教程等 (可以Release到个人主页, github page)."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:11
+msgid "自动为代码生成Docs (可以免费发布到 `Read the Docs <https://readthedocs.org/>`_ )."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:14
+msgid "安装配置Sphinx"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:15
+msgid "``pip install sphinx sphinx-autobuild sphinx_rtd_theme``"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:16
+msgid "在需要的目录下, 比如[records-docs], run ``sphinx-quickstart``"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:17
+msgid "填写交互信息, 基本只要回车, 修改了以下几个项目: (之后还可以 ``source/conf.py`` 中修改配置)"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:28
+msgid ""
+"github pages默认使用Jekyll, 不会使用下划线 underscore (_) 开头的文件, 因此在 ``_static`` "
+"下的js文件等都无法被访问到. 需要在根目录中添加一个空的.nojekyll file来turn off Jekyll."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:30
+msgid "修改成经典主题 **sphinx_rtd_theme**"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:32
+msgid "``pip install sphinx_rtd_theme``"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:34
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:45
+msgid "修改 ``source/conf.py``:"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:41
+msgid "支持 **markdown**"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:43
+msgid "``pip install recommonmark``"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:55
+msgid "Run ``make html``, 进入 ``build/html`` 用浏览器打开 ``index.html``, 就能看到结果了."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:58
+msgid "其他配置"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:60
+msgid "支持中文搜索"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:61
+msgid ""
+"Sphinx的搜索是JSON文件支持的. 当运行Sphinx生成文档时, 程序会对现有网页内容进行分词, 然后生成相应的 *工具* 和 *索引* "
+"``searchtools.js`` 和 ``searchindex.js``. 具体和语言相关的源文件在比如 "
+"``/home/xtwang/anaconda3/lib/python3.6/site-"
+"packages/sphinx/search/zh.py``, 从中我们可以看到中文使用 `jieba "
+"<https://github.com/fxsjy/jieba>`_ 分词. 若要支持中文, 则 ``source/conf.py`` 要设置 "
+"``language = 'zh'``."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:64
+msgid "注意语言不要设置成'zh-CN', 不然无法支持中文搜索"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:65
+msgid ""
+"因为是通过简单的 **分词** 达到搜索的目的, 所以在搜索的时候注意关键词, 比如 ``托管文档`` 查不到, 可能因为它不是一个常见的词, "
+"而以 ``托管 文档`` 就可以缓解"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:68
+msgid "将网页发布到个人主页"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:69
+msgid ""
+"如果直接将doc的source和build文件放在github.io(个人主页)目录下, 会出现冗长的url问题, 像 "
+"xxx.io/records/build/html/index.html."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:71
+msgid ""
+"在github.io目录下又增加了一个repo - open-docs, 专门存放源文件. github.io和docs分开用github管理, "
+"不干扰. 通过脚本, 在编译后把需要的网页从docs拷贝到github.io中."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:86
+msgid "1. build目录中只需要把 ``html`` copy发布即可 ::"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:97
+msgid ""
+"这个问题应该还有其他 `高级方法 <https://daler.github.io/sphinxdoc-"
+"test/includeme.html>`_."
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:100
+msgid "TODO - 为项目代码自动注释"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:103
+msgid "参考"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:105
+msgid "**安装**"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:107
+msgid ""
+"`使用ReadtheDocs托管文档 "
+"<https://www.xncoding.com/2017/01/22/fullstack/readthedoc.html>`_"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:109
+msgid "**其他项目文档参考**"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:111
+msgid "`Open-ReID <https://cysu.github.io/open-reid/index.html#>`_"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:112
+msgid "`mmcv <https://mmcv.readthedocs.io/en/latest/>`_"
+msgstr ""
+
+#: ../../source/01python_learnning/sphinxlearning/01_sphinxlearning.rst:113
+msgid ""
+"`基于Sphinx的技术文档开发教程 "
+"<https://doclikecode.readthedocs.io/zh_CN/latest/index.html>`_"
+msgstr ""
+
