@@ -49,7 +49,7 @@ source_suffix = '.rst'
 
 master_doc = 'index'
 
-language = "en"
+language = "zh_CN"
 
 pygments_style = 'sphinx'
 

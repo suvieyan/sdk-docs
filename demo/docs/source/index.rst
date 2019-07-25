@@ -6,7 +6,10 @@ Welcome to demo's API Documentation
     :glob:
     
     01python_learnning/index
-    02datastruct/index
+    02_basic/index
+    03_database/index
+    04_linux/index
+    05_front/index
 
 
 Introduction
