@@ -5,10 +5,12 @@
 
 
 .. toctree::
-    :maxdepth: 2
-    :numbered: 2
+    :maxdepth: 3
+    :numbered: 4
+
 
     01_data_struct/index
     02_os/index
     03_network/index
     04_organize/index
+
